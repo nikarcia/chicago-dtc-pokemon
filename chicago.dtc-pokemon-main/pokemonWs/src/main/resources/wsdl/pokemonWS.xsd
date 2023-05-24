@@ -1,0 +1,30 @@
+<xsd:schema elementFormDefault="qualified" targetNamespace="pokemonWS/schema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+  <xsd:element name="GetPokemonRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="offset" minOccurs="1" maxOccurs="1" nillable="true" type="xsd:integer"/>
+        <xsd:element name="limit" minOccurs="1" maxOccurs="1" nillable="true" type="xsd:integer"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+
+  <xsd:element name="GetPokemonResponse" >
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="pokemon" maxOccurs="unbounded">
+          <xsd:complexType>
+          <xsd:sequence>
+          <xsd:element name="name" minOccurs="1" maxOccurs="1" nillable="false" type="xsd:string"/>
+          <xsd:element name="url" minOccurs="1" maxOccurs="1" nillable="false" type="xsd:string"/>
+          </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+
+</xsd:schema>

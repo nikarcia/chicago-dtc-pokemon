@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="584cc6c3-344c-4dc6-ad0e-fddb61cd3c39" activeEnvironment="Default" name="pokemonService?wsdl" resourceRoot="" soapui-version="5.7.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="7e2c1204-193e-4de7-9b97-405d3751a3d5" wsaVersion="NONE" name="PokemonServiceImplServiceSoapBinding" type="wsdl" bindingName="{http://controller.dtc.chicago.com/}PokemonServiceImplServiceSoapBinding" soapVersion="1_2" anonymous="optional" definition="http://localhost:8080/services/soap/pokemonService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/soap/pokemonService?wsdl"><con:part><con:url>http://localhost:8080/services/soap/pokemonService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="PokemonServiceImplService" targetNamespace="http://controller.dtc.chicago.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://controller.dtc.chicago.com/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns3="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="pokemonWS/wsdl">
+  <wsdl:import location="http://localhost:8080/services/soap/pokemonService?wsdl=pokemonWSPort.wsdl" namespace="pokemonWS/wsdl"></wsdl:import>
+  <wsdl:binding name="PokemonServiceImplServiceSoapBinding" type="ns1:pokemonWSPort">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetPokemon">
+      <soap12:operation soapAction="pokemonWS/GetPokemon" style="document"/>
+      <wsdl:input name="GetPokemon">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetPokemonResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PokemonServiceImplService">
+    <wsdl:port binding="tns:PokemonServiceImplServiceSoapBinding" name="PokemonServiceImplPort">
+      <soap12:address location="http://localhost:8080/services/soap/pokemonService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/services/soap/pokemonService?wsdl=pokemonWSPort.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="pokemonWSPort" targetNamespace="pokemonWS/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="pokemonWS/schema" xmlns:ns1="pokemonWS/wsdl">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="pokemonWS/schema" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GetPokemonRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="offset" nillable="true" type="xs:integer"/>
+            <xs:element name="limit" nillable="true" type="xs:integer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPokemonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="pokemon">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="name" type="xs:string"/>
+                  <xs:element name="url" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPokemonResponse">
+    <wsdl:part element="ns2:GetPokemonResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPokemon">
+    <wsdl:part element="ns2:GetPokemonRequest" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="pokemonWSPort">
+    <wsdl:operation name="GetPokemon">
+      <wsdl:input message="ns1:GetPokemon" name="GetPokemon"></wsdl:input>
+      <wsdl:output message="ns1:GetPokemonResponse" name="GetPokemonResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/soap/pokemonService</con:endpoint></con:endpoints><con:operation id="77b7f893-fa09-492e-a7e5-d3e3711e8407" isOneWay="false" action="pokemonWS/GetPokemon" name="GetPokemon" bindingOperationName="GetPokemon" type="Request-Response" outputName="GetPokemonResponse" inputName="GetPokemon" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8ff16232-cba3-4293-95cb-fa54641c805c" name="Request with security" outgoingWss="wss"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/soap/pokemonWS</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:sch="pokemonWS/schema">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <sch:GetPokemonRequest>\r
+         <sch:offset>25</sch:offset>\r
+         <sch:limit>5</sch:limit>\r
+      </sch:GetPokemonRequest>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://controller.dtc.chicago.com/pokemonWSPort/GetPokemon"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer><con:outgoing><con:name>wss</con:name><con:entry type="Username" username="admin" password="pwd123"><con:configuration/></con:entry></con:outgoing></con:wssContainer><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
